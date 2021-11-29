@@ -1,5 +1,10 @@
 package ru.netology.domain;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@Data
 public class Radio {
     private int radioId;
     private String name = "Panasonic-Z1";
@@ -12,7 +17,6 @@ public class Radio {
     private int maxVolume = 100;
     private int currentVolume = (maxVolume + minVolume) / 2;
 
-    public Radio() {}
     public Radio(int amountRadioStation) {
         this.maxRadioStationNumber = determinationMaxRadioStationNumber(amountRadioStation);
     }
@@ -29,58 +33,6 @@ public class Radio {
         return maxRadioStationNumber;
     }
 
-    public int getRadioId() {
-        return radioId;
-    }
-
-    public void setRadioId(int radioId) {
-        this.radioId = radioId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public boolean isOn() {
-        return on;
-    }
-
-    public void setOn(boolean on) {
-        this.on = on;
-    }
-
-    public int getAmountRadioStation() {
-        return amountRadioStation;
-    }
-
-    public void setAmountRadioStation(int amountRadioStation) {
-        this.amountRadioStation = amountRadioStation;
-    }
-
-    public int getMinRadioStationNumber() {
-        return minRadioStationNumber;
-    }
-
-    public void setMinRadioStationNumber(int minRadioStationNumber) {
-        this.minRadioStationNumber = minRadioStationNumber;
-    }
-
-    public int getMaxRadioStationNumber() {
-        return maxRadioStationNumber;
-    }
-
-    public void setMaxRadioStationNumber(int maxRadioStationNumber) {
-        this.maxRadioStationNumber = maxRadioStationNumber;
-    }
-
-    public int getCurrentRadioStationNumber() {
-        return currentRadioStationNumber;
-    }
-
     //Ограничение на вводимый в ручную номер радиостанции в setter:
     public void setCurrentRadioStationNumber(int currentRadioStationNumber) {
         if (currentRadioStationNumber < minRadioStationNumber) {
@@ -92,26 +44,6 @@ public class Radio {
             return;
         }
         this.currentRadioStationNumber = currentRadioStationNumber;
-    }
-
-    public int getMinVolume() {
-        return minVolume;
-    }
-
-    public void setMinVolume(int minVolume) {
-        this.minVolume = minVolume;
-    }
-
-    public int getMaxVolume() {
-        return maxVolume;
-    }
-
-    public void setMaxVolume(int maxVolume) {
-        this.maxVolume = maxVolume;
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
     }
 
     //Ограничение на вводимый в ручную уровень громкости радиостанции в setter:
