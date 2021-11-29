@@ -1,14 +1,41 @@
 package ru.netology.domain;
 
 public class Radio {
-    private String name;
-    private boolean on;
-    private int minRadioStationNumber;
-    private int maxRadioStationNumber;
-    private int currentRadioStationNumber;
-    private int minVolume;
-    private int maxVolume;
-    private int currentVolume;
+    private int radioId;
+    private String name = "Panasonic-Z1";
+    private boolean on = true;
+    private int amountRadioStation = 10;
+    private int minRadioStationNumber = 0;
+    private int maxRadioStationNumber = determinationMaxRadioStationNumber(amountRadioStation);
+    private int currentRadioStationNumber = minRadioStationNumber;
+    private int minVolume = 0;
+    private int maxVolume = 100;
+    private int currentVolume = (maxVolume + minVolume) / 2;
+
+    public Radio() {}
+    public Radio(int amountRadioStation) {
+        this.maxRadioStationNumber = determinationMaxRadioStationNumber(amountRadioStation);
+    }
+
+    //Расчет максимального номера радиостанций от количества и минимального номера радиостанций
+    private int determinationMaxRadioStationNumber(int amountRadioStation) {
+        if (amountRadioStation <= 0) {
+            amountRadioStation = this.amountRadioStation;
+        }
+        maxRadioStationNumber = minRadioStationNumber;
+        for (int cycle = 1; cycle < amountRadioStation; cycle++) {
+            maxRadioStationNumber++;
+        }
+        return maxRadioStationNumber;
+    }
+
+    public int getRadioId() {
+        return radioId;
+    }
+
+    public void setRadioId(int radioId) {
+        this.radioId = radioId;
+    }
 
     public String getName() {
         return name;
@@ -24,6 +51,14 @@ public class Radio {
 
     public void setOn(boolean on) {
         this.on = on;
+    }
+
+    public int getAmountRadioStation() {
+        return amountRadioStation;
+    }
+
+    public void setAmountRadioStation(int amountRadioStation) {
+        this.amountRadioStation = amountRadioStation;
     }
 
     public int getMinRadioStationNumber() {
